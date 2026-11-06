@@ -1,112 +1,215 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BladeAntivirus - Independent Windows security project.">
-    <title>BladeAntivirus — Security Redefined</title>
+    <meta name="theme-color" content="#090d12">
+    <meta name="description" content="BladeAntivirus — Windows antivirus project. Releases, downloads and security updates.">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    <title>BladeAntivirus — Security for Windows</title>
 
-        body {
-            margin: 0;
-            background: #0b0e14;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-        }
-
-        header {
-            padding: 25px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #202936;
-        }
-
-        .logo {
-            color: #38d6a3;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: #aab6c2;
-            text-decoration: none;
-            margin-left: 22px;
-        }
-
-        main {
-            min-height: 75vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        h1 {
-            font-size: clamp(38px, 7vw, 68px);
-            margin-bottom: 15px;
-        }
-
-        h1 span {
-            color: #38d6a3;
-        }
-
-        p {
-            color: #9ba8b5;
-            line-height: 1.7;
-        }
-
-        .download {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 16px 28px;
-            background: #38d6a3;
-            color: #07120e;
-            border-radius: 9px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #65717e;
-            border-top: 1px solid #202936;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
+    <header class="navbar">
+        <a class="brand" href="#">
+            <span class="brand-icon">B</span>
+            <span>BLADE<span class="accent">ANTIVIRUS</span></span>
+        </a>
 
-<header>
-    <div class="logo">BLADE ANTIVIRUS</div>
-    <nav>
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
-    </nav>
-</header>
+        <nav>
+            <a href="#downloads">Downloads</a>
+            <a href="#release">Latest Release</a>
+            <a href="https://github.com/blade391off/bladeantivirus"
+               target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </nav>
 
-<main>
-    <h1>Your Security.<br><span>Our Mission.</span></h1>
+        <span class="connection">
+            <span class="status-dot"></span>
+            API CONNECTED
+        </span>
+    </header>
 
-    <p>
-        Modern Windows security software.<br>
-        Built with C++ and Qt.
-    </p>
+    <main>
+        <section class="hero">
+            <div class="hero-label">
+                <span class="status-dot"></span>
+                WINDOWS SECURITY PROJECT
+            </div>
 
-    <a class="download" href="https://github.com/blade391off/Blade-Antivirus/releases/download/1.4/BladeAntivirus.exe">
-        Download BladeAntivirus
-    </a>
-</main>
+            <h1>
+                YOUR SYSTEM.<br>
+                <span class="accent">YOUR SECURITY.</span>
+            </h1>
 
-<footer>
-    © 2026 BladeAntivirus. Independent software project.
-</footer>
+            <p>
+                BladeAntivirus is a Windows antivirus project focused
+                on malware detection, real-time protection and system security.
+            </p>
 
+            <div class="hero-actions">
+                <a href="#release" class="button button-primary">
+                    Download latest release ↓
+                </a>
+
+                <a href="https://github.com/blade391off/bladeantivirus"
+                   class="button button-secondary"
+                   target="_blank" rel="noopener noreferrer">
+                    View on GitHub ↗
+                </a>
+            </div>
+        </section>
+
+        <!-- DOWNLOADS WIDGET -->
+        <section class="section" id="downloads">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">REPOSITORY STATISTICS</span>
+                    <h2>Downloads</h2>
+                </div>
+
+                <span class="live-badge">
+                    <span class="status-dot"></span>
+                    LIVE DATA
+                </span>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-icon">↓</div>
+                    <span class="stat-label">TOTAL DOWNLOADS</span>
+
+                    <div class="stat-number" id="total-downloads">
+                        —
+                    </div>
+
+                    <span class="stat-description">
+                        Across all available releases
+                    </span>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon">◈</div>
+                    <span class="stat-label">TOTAL RELEASES</span>
+
+                    <div class="stat-number" id="total-releases">
+                        —
+                    </div>
+
+                    <span class="stat-description">
+                        Published GitHub releases
+                    </span>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon">⬡</div>
+                    <span class="stat-label">LATEST VERSION</span>
+
+                    <div class="stat-number version-number" id="latest-version">
+                        —
+                    </div>
+
+                    <span class="stat-description">
+                        Current stable release
+                    </span>
+                </article>
+            </div>
+
+            <div class="update-info">
+                <span id="downloads-updated">Waiting for GitHub API...</span>
+                <button class="refresh-button" id="refresh-button">
+                    ↻ Refresh
+                </button>
+            </div>
+
+            <div id="downloads-error" class="error-message" hidden></div>
+        </section>
+
+        <!-- LATEST RELEASE WIDGET -->
+        <section class="section" id="release">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">GET THE LATEST VERSION</span>
+                    <h2>Latest Release</h2>
+                </div>
+
+                <span class="release-badge" id="release-status">
+                    LOADING
+                </span>
+            </div>
+
+            <article class="release-card">
+                <div class="release-top">
+                    <div>
+                        <span class="release-label">CURRENT VERSION</span>
+                        <h3 id="release-version">Loading...</h3>
+                    </div>
+
+                    <div class="release-date">
+                        <span>RELEASE DATE</span>
+                        <strong id="release-date">—</strong>
+                    </div>
+                </div>
+
+                <div class="release-divider"></div>
+
+                <h4>What's new?</h4>
+
+                <div id="release-changelog" class="changelog">
+                    Fetching release notes...
+                </div>
+
+                <div class="release-divider"></div>
+
+                <div class="assets-heading">
+                    <h4>Release assets</h4>
+                    <span id="assets-count">0 FILES</span>
+                </div>
+
+                <div id="release-assets" class="assets-list">
+                    <div class="loading-placeholder">
+                        Loading release files...
+                    </div>
+                </div>
+
+                <a id="main-download"
+                   class="button button-primary download-button"
+                   href="https://github.com/blade391off/bladeantivirus/releases"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ↓ Download latest version
+                </a>
+
+                <a id="release-page"
+                   class="release-page-link"
+                   href="https://github.com/blade391off/bladeantivirus/releases"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View release on GitHub ↗
+                </a>
+            </article>
+
+            <div id="release-error" class="error-message" hidden></div>
+        </section>
+
+        <section class="footer-banner">
+            <span class="status-dot"></span>
+            <div>
+                <strong>BladeAntivirus</strong>
+                <p>Independent Windows security project.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2026 BladeAntivirus</span>
+        <a href="https://github.com/blade391off/bladeantivirus"
+           target="_blank" rel="noopener noreferrer">
+            GitHub Repository ↗
+        </a>
+    </footer>
 </body>
 </html>
